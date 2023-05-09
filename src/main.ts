@@ -18,7 +18,12 @@ export const redis =
   new Redis({
     host: process.env.REDIS_HOST,
     port: Number(process.env.REDIS_PORT),
+    password: process.env.REDIS_PASSWORD,
     username: process.env.REDIS_USERNAME,
+    tls: {
+      servername: process.env.REDIS_HOST,
+      minVersion: 'TLSv1.2'
+    },
   });
 
 export const tmdbApi = process.env.apiKey && process.env.apiKey;
